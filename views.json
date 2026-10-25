@@ -1,13 +1,30 @@
 [
   {
-    "name": "week",
-    "title": "This week",
-    "subtitle": "Discovery Review for Claude Code: what needs attention, rendered by npm run view",
+    "name": "review-desk",
+    "title": "Discovery review desk",
+    "subtitle": "Internal working records. No authority to disclose.",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Review queue",
+        "sql": "select source_id,name,owner,due_date,issue from attention order by due_date nulls last,source_id"
+      },
+      {
+        "title": "Disclosure readiness",
+        "sql": "select source_id,name,readiness from disclosure_register order by source_id"
+      }
+    ]
+  },
+  {
+    "name": "evidence-quality",
+    "title": "Evidence quality",
+    "sections": [
+      {
+        "title": "Record checks",
+        "sql": "select source_id,rule,issue from compliance_checks order by source_id,rule"
+      },
+      {
+        "title": "Family gaps",
+        "sql": "select source_id,name,parent_id,issue from family_gaps order by source_id"
       }
     ]
   }

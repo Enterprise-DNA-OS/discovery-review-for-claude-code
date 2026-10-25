@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Which reviewed document is held because its attachment is privileged?",
+    "command": "disclosure-readiness"
+  },
+  {
+    "question": "Which records changed after the last review?",
+    "command": "review-queue"
+  },
+  {
+    "question": "Which duplicate copies have different custodians?",
+    "command": "duplicates"
+  },
+  {
+    "question": "Which imported attachment has no parent?",
+    "command": "family-gaps"
+  },
+  {
+    "question": "Which adverse documents remain held from the schedule?",
+    "command": "adverse-documents"
+  },
+  {
+    "question": "Who has overdue reviews without an assigned owner?",
+    "command": "attention"
+  },
+  {
+    "question": "Which matter needs its retention purpose reviewed while under legal hold?",
+    "command": "compliance"
+  },
+  {
+    "question": "What did a corrected source record replace?",
+    "command": "history"
+  },
+  {
+    "question": "Which import supplied these records?",
+    "command": "imports"
+  },
+  {
+    "question": "What evidence mentions damaged deliveries?",
+    "command": "search damaged"
+  }
+]

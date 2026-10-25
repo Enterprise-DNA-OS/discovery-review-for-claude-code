@@ -1,24 +1,7 @@
 # Why there is no front end
 
-GoldFynch is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+This desk works from exported document registers and supplied text. Ask for the unreviewed records, a family gap or the reasons a document is held. The database answers and records the next decision. Read-only HTML gives the review meeting a printable view.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+GoldFynch also processes native files, performs OCR and provides visual document review and redaction. Those functions are substantive, not just a screen over records. This base replaces the register and review coordination workflow for teams that keep their original evidence separately. It does not replace the native processing platform.
 
-## What you gain
-
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
-
-## What you give up
-
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
-
-## Who this fits
-
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep GoldFynch. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/goldfynch
+There is no mobile review app, offline synchronization, drag and drop, interactive image viewer or visual redaction editor. Local PGlite runs without a server but is single-process; using a remote coding agent still depends on that service. A shared team needs access controls and case isolation. Enterprise DNA can build agreed connections and screens into a custom version.

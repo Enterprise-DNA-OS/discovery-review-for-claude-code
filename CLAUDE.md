@@ -1,43 +1,47 @@
 # Discovery Review for Claude Code: operating instructions
 
-This file is the brain. Claude Code reads it at the start of every session. It says who this is for, how work gets done, and the one right way to do each recurring job.
+Use for a legal team's internal document review desk. Read docs/compliance.md and docs/replace-goldfynch.md before importing business evidence. Every answer starts with a CLI read. Never infer privilege, relevance or disclosure authority from a tag or filename. A lawyer supplies the decisions.
 
-## Who this is for
+## Routing
 
-- **Business:** [YOUR BUSINESS]
-- **Operator:** [YOUR NAME], [your role]
-- **What matters most:** [the one or two outcomes you care about]
-
-Fill this in once. A worker with context knows. A worker without it guesses.
-
-## How to work
-
-1. **Take a brief, not a script.** The operator describes the outcome. You run the right command and present the answer.
-2. **Read before you write.** Before drafting anything about a record, read its full history first.
-3. **Plain language.** Short sentences. No filler. Numbers in tables.
-4. **Silent success, loud problems.** No play-by-play. Say what broke and what you did about it.
-5. **Stop at the line.** Anything that sends, deletes, or faces a customer waits for a yes in this session.
-
-## Routing table: one right way for each recurring job
-
-| When the operator asks for... | Use this |
+| Request | Recipe |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| matters | /matters |
+| add matter | /add-matter |
+| matter | /matter |
+| set matter | /set-matter |
+| documents | /documents |
+| add document | /add-document |
+| document | /document |
+| assign | /assign |
+| review | /review |
+| set document | /set-document |
+| review queue | /review-queue |
+| privilege log | /privilege-log |
+| adverse documents | /adverse-documents |
+| family gaps | /family-gaps |
+| duplicates | /duplicates |
+| chronology | /chronology |
+| search | /search |
+| attention | /attention |
+| compliance | /compliance |
+| disclosure readiness | /disclosure-readiness |
+| weekly review | /weekly-review |
+| log | /log |
+| history | /history |
+| imports | /imports |
+| import | /import |
+| export | /export |
+| ingest text | /ingest-text |
+| draft disclosure | /draft-disclosure |
+| draft review | /draft-review |
+| Change a field or rule | /customise |
+| Add a read-only report | /new-view |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+## Rules
 
-## Hard rules
+Use node scripts/discovery.mjs help for arguments; append --json when checking results. Every mutation needs --actor. Read the record and history first. If a name is ambiguous, list matches and ask. Never send, serve, delete, release privileged material or make an irreversible outward change. Drafts remain local. Do not treat a candidate schedule as permission to disclose. Never overwrite originals. Legal holds prevent routine disposal; this CLI has no deletion command.
 
-- Never send email or messages from here. Draft to `drafts/`, a person sends.
-- Never delete records without an explicit yes in this session. Prefer marking closed or archived.
-- Never invent a record. If a name is ambiguous, list the candidates and ask.
-- The database is the source of truth. If the answer is not in it, say so.
+A new business installation uses a fresh database and migrations without demo seed. Authentication, permissions and case isolation are required for a shared installation. Do not open privileged records in an external agent service without the firm's authority. Change the schema through forward migrations; test them on a temporary database first. Never change a historic migration already used for business data.
 
-## Where things live
-
-- `scripts/` the CLI. `scripts/lib/db.mjs` picks `DATABASE_URL` (Postgres, Supabase) or the embedded database in `.data/`.
-- `supabase/migrations/` the schema, plain SQL. `npm run migrate` applies it.
-- `.claude/commands/` the slash commands. Add one every time the same ask comes twice.
-- `docs/` the thesis and the guide for moving off GoldFynch.
-
-Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/goldfynch
+Schema: supabase/migrations. Data access: scripts/lib/db.mjs. The only domain CLI is scripts/discovery.mjs. The workflow library is .claude/commands. No alternate runtime copies.

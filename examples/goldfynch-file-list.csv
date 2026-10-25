@@ -1,0 +1,3 @@
+GF ID,File Name,Custodian,Source,Family ID,Parent ID,MD5 Hash,Tags,Redacted?,Protected?,Primary Date
+EXT001,Purchase order.txt,Hana,Mailbox export,FEXT,,dddddddddddddddddddddddddddddddd,contract,false,false,2026-09-02 09:00:00
+EXT002,Attachment.txt,Hana,Mailbox export,FEXT,EXT001,eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee,review,false,false,2026-09-02 09:01:00

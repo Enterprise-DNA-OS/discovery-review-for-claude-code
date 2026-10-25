@@ -1,11 +1,41 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "review-pack",
+    "title": "Internal review pack",
+    "for_each": "select id,name from matters order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Internal review pack",
+        "note": "Private working paper. Includes privilege information.",
+        "sql": "select source_id,name,owner,review_status,disposition,reason from review_register where matter_id=$1 order by source_id"
+      }
+    ]
+  },
+  {
+    "name": "privilege-log",
+    "title": "Internal privilege log",
+    "for_each": "select id,name from matters order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Internal privilege log",
+        "note": "Lawyer must review privilege grounds and descriptions before any external use.",
+        "sql": "select source_id,name,reason,reviewer,review_status from review_register where matter_id=$1 and disposition='privileged' order by source_id"
+      }
+    ]
+  },
+  {
+    "name": "discovery-schedule",
+    "title": "Draft discovery schedule",
+    "for_each": "select id,name from matters order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Draft discovery schedule",
+        "note": "Candidate schedule only. Excludes held records. Not a sworn affidavit or a production package; no source files are attached.",
+        "sql": "select source_id,name,custodian,document_date,adverse from disclosure_register where matter_id=$1 and readiness='candidate for lawyer review' order by source_id"
+      }
     ]
   }
 ]
